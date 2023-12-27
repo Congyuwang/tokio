@@ -263,8 +263,9 @@ fn stall() {
 }
 
 criterion_group!(
-    rt_multi_scheduler,
-    spawn_many_local,
+    name = rt_multi_scheduler;
+    config = Criterion::default().measurement_time(Duration::from_secs(30));
+    targets = spawn_many_local,
     spawn_many_remote_idle,
     spawn_many_remote_busy1,
     spawn_many_remote_busy2,
